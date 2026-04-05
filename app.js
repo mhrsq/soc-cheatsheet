@@ -153,15 +153,43 @@ function renderHomePage() {
       <p>Panduan lengkap tools dan referensi SOC Analyst — dari install, cara pakai, sampai playbook investigasi.</p>
     </div>
     <div class="soc-workflow">
-      <div class="soc-workflow-label">🔄 SOC Analyst Workflow</div>
+      <div class="soc-workflow-label">🔄 SOC Analyst Workflow — Incident Response Lifecycle</div>
       <div class="workflow-steps">
-        <div class="wf-step"><div class="wf-num">1</div><div class="wf-name">Detect</div><div class="wf-desc">SIEM alert</div></div><div class="wf-arrow">→</div>
-        <div class="wf-step"><div class="wf-num">2</div><div class="wf-name">Triage</div><div class="wf-desc">FP atau TP?</div></div><div class="wf-arrow">→</div>
-        <div class="wf-step"><div class="wf-num">3</div><div class="wf-name">Investigate</div><div class="wf-desc">Deep analysis</div></div><div class="wf-arrow">→</div>
-        <div class="wf-step"><div class="wf-num">4</div><div class="wf-name">Contain</div><div class="wf-desc">Stop spread</div></div><div class="wf-arrow">→</div>
-        <div class="wf-step"><div class="wf-num">5</div><div class="wf-name">Eradicate</div><div class="wf-desc">Remove threat</div></div><div class="wf-arrow">→</div>
-        <div class="wf-step"><div class="wf-num">6</div><div class="wf-name">Recover</div><div class="wf-desc">Back to normal</div></div><div class="wf-arrow">→</div>
-        <div class="wf-step"><div class="wf-num">7</div><div class="wf-name">Document</div><div class="wf-desc">Case report</div></div>
+        <div class="wf-step">
+          <div class="wf-tooltip">Alert masuk dari SIEM (Wazuh/Splunk).<br>Bisa dari rule, threshold, atau anomaly.</div>
+          <div class="wf-num">1</div><div class="wf-name">Detect</div><div class="wf-desc">SIEM alert masuk</div>
+        </div><div class="wf-arrow">→</div>
+        <div class="wf-step">
+          <div class="wf-tooltip">L1 Analyst review alert.<br>Tentukan: False Positive atau True Positive?<br>Cek context, enrichment IOC.</div>
+          <div class="wf-num">2</div><div class="wf-name">Triage</div><div class="wf-desc">FP atau TP?</div>
+        </div><div class="wf-arrow">→</div>
+        <div class="wf-step">
+          <div class="wf-tooltip">Deep dive analysis oleh L2/L3.<br>Gunakan: Wireshark, Volatility, log analysis.<br>Tentukan scope dan impact.</div>
+          <div class="wf-num">3</div><div class="wf-name">Investigate</div><div class="wf-desc">Deep analysis</div>
+        </div><div class="wf-arrow">→</div>
+        <div class="wf-step">
+          <div class="wf-tooltip">Stop penyebaran threat.<br>Isolasi endpoint, block IP/domain,<br>disable compromised account.</div>
+          <div class="wf-num">4</div><div class="wf-name">Contain</div><div class="wf-desc">Stop penyebaran</div>
+        </div><div class="wf-arrow">→</div>
+        <div class="wf-step">
+          <div class="wf-tooltip">Hapus threat dari environment.<br>Remove malware, patch vulnerability,<br>clean persistence mechanisms.</div>
+          <div class="wf-num">5</div><div class="wf-name">Eradicate</div><div class="wf-desc">Hapus threat</div>
+        </div><div class="wf-arrow">→</div>
+        <div class="wf-step">
+          <div class="wf-tooltip">Kembalikan sistem ke normal.<br>Restore backup, verify clean state,<br>monitor untuk re-infection.</div>
+          <div class="wf-num">6</div><div class="wf-name">Recover</div><div class="wf-desc">Back to normal</div>
+        </div><div class="wf-arrow">→</div>
+        <div class="wf-step">
+          <div class="wf-tooltip">Dokumentasi di IRIS/TheHive.<br>Case report, IOC list, timeline,<br>lessons learned, update rules.</div>
+          <div class="wf-num">7</div><div class="wf-name">Document</div><div class="wf-desc">Case report</div>
+        </div>
+      </div>
+      <div class="wf-return">
+        <div class="wf-return-arrow">
+          <div class="wf-return-line"></div>
+          ↩ Lessons learned → update detection rules → kembali ke Detect
+          <div class="wf-return-line"></div>
+        </div>
       </div>
     </div>
     ${buildHomePage()}`;
