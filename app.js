@@ -164,17 +164,6 @@ function renderHomePage() {
         <div class="wf-step"><div class="wf-num">7</div><div class="wf-name">Document</div><div class="wf-desc">Case report</div></div>
       </div>
     </div>
-    <div class="vps-box">
-      <div>
-        <div class="vps-box-label">🖥 VPS Shared Access</div>
-        <p style="font-size:12px;color:var(--text3);max-width:180px;line-height:1.5">Tools sudah di-hosting. Langsung akses.</p>
-      </div>
-      <div class="vps-entries">
-        <div class="vps-entry"><div class="ve-name">Wazuh Dashboard</div><div class="ve-url">🔗 <a href="https://141.94.36.151" target="_blank" style="color:var(--accent)">https://141.94.36.151</a></div><div class="ve-cred">admin / SecretPassword</div></div>
-        <div class="vps-entry"><div class="ve-name">DFIR-IRIS</div><div class="ve-url">🔗 <a href="https://141.94.36.151:8443" target="_blank" style="color:var(--accent)">https://141.94.36.151:8443</a></div><div class="ve-cred">administrator / dikasih saat kelas</div></div>
-        <div class="vps-entry"><div class="ve-name">Splunk</div><div class="ve-url">🔗 <a href="http://141.94.36.151:8001" target="_blank" style="color:var(--accent)">http://141.94.36.151:8001</a></div><div class="ve-cred">admin / dikasih saat kelas</div></div>
-      </div>
-    </div>
     ${buildHomePage()}`;
 }
 
