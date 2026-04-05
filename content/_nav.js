@@ -49,6 +49,16 @@ const NAV_SECTIONS = [
     ]
   },
   {
+    label: 'NDR / IDS',
+    items: [
+      { id: 'ndr-ids', name: 'IDS/IPS & NDR', color: '#f472b6', children: [
+        { id: 'ndr-overview', name: 'Overview' },
+        { id: 'ndr-suricata', name: 'Suricata' },
+        { id: 'ndr-snort', name: 'Snort' }
+      ]}
+    ]
+  },
+  {
     label: 'Ticketing',
     items: [
       { id: 'iris', name: 'DFIR-IRIS', color: '#1D9E75', badge: 'VPS', children: [
@@ -120,6 +130,9 @@ const HOME_CATEGORIES = [
   ]},
   { name: 'EDR', tools: [
     { id: 'wazuh-agent-overview', name: 'Wazuh Agent', hosted: true, desc: 'EDR agent di endpoint. Process monitoring, FIM, network tracking, active response.' }
+  ]},
+  { name: 'NDR / IDS', tools: [
+    { id: 'ndr-overview', name: 'IDS/IPS & NDR', hosted: false, desc: 'Apa bedanya IDS vs IPS vs NDR? Suricata & Snort setup, rules, dan detection.' }
   ]},
   { name: 'Ticketing System', tools: [
     { id: 'iris-overview', name: 'DFIR-IRIS', hosted: true, desc: 'Case management DFIR. IOC tracking, timeline, evidence, report generation.' },
