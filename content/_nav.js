@@ -26,7 +26,7 @@ const NAV_SECTIONS = [
   {
     label: 'SIEM',
     items: [
-      { id: 'wazuh', name: 'Wazuh', color: '#58a6ff', badge: 'VPS', children: [
+      { id: 'wazuh', name: 'Wazuh', color: '#58a6ff', children: [
         { id: 'wazuh-overview', name: 'Overview' },
         { id: 'wazuh-setup', name: 'Getting Started' },
         { id: 'wazuh-usage', name: 'Usage Guide' }
@@ -41,7 +41,7 @@ const NAV_SECTIONS = [
   {
     label: 'EDR',
     items: [
-      { id: 'wazuh-agent', name: 'Wazuh Agent', color: '#3fb950', badge: 'VPS', children: [
+      { id: 'wazuh-agent', name: 'Wazuh Agent', color: '#3fb950', children: [
         { id: 'wazuh-agent-overview', name: 'Overview' },
         { id: 'wazuh-agent-setup', name: 'Setup & Troubleshoot' },
         { id: 'wazuh-agent-usage', name: 'Config & Response' }
@@ -61,12 +61,12 @@ const NAV_SECTIONS = [
   {
     label: 'Ticketing',
     items: [
-      { id: 'iris', name: 'DFIR-IRIS', color: '#1D9E75', badge: 'VPS', children: [
+      { id: 'iris', name: 'DFIR-IRIS', color: '#1D9E75', children: [
         { id: 'iris-overview', name: 'Overview' },
         { id: 'iris-setup', name: 'Setup' },
         { id: 'iris-usage', name: 'Full Guide' }
       ]},
-      { id: 'thehive', name: 'TheHive', color: '#1D9E75', badge: 'VPS', children: [
+      { id: 'thehive', name: 'TheHive', color: '#1D9E75', children: [
         { id: 'thehive-overview', name: 'Overview' },
         { id: 'thehive-setup', name: 'Setup' },
         { id: 'thehive-usage', name: 'Full Guide' }
