@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOC Tools Preparation — JagoanSiber</title>
+  <link rel="icon" href="../favicon.png" type="image/png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="theme.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Toolbar -->
+<div id="slide-toolbar">
+  <button class="toolbar-btn" onclick="toggleFullscreen()" title="Fullscreen">⛶</button>
+  <div class="theme-switch" onclick="toggleTheme()" title="Toggle dark mode">
+    <div class="theme-knob"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></div>
+  </div>
+</div>
+
+<div class="reveal">
+<div class="slides">
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 1 — TITLE -->
+<!-- ═══════════════════════════════════════════ -->
+<section>
+  <div class="title-slide">
+    <img src="../favicon.png" alt="JagoanSiber" class="title-logo">
+    <h1 class="title-main">SOC Tools<br><span>Preparation</span></h1>
+    <p class="title-sub">Pertemuan 2 — SOC Analyst Training</p>
+    <div class="title-meta">JagoanSiber <span style="margin:0 10px">|</span> April 2026</div>
+    <div class="title-tagline">Detect. Investigate. Respond.</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 2 — AGENDA -->
+<!-- ═══════════════════════════════════════════ -->
+<section>
+  <div class="slide-header">
+    <div class="icon" style="background:var(--bg-card)">☰</div>
+    <h2>Agenda</h2>
+    <span class="slide-num">02</span>
+  </div>
+  <div class="grid-2">
+    <div>
+      <div style="margin-bottom:14px"><span class="badge badge-green">Context — 15 min</span></div>
+      <div class="timeline">
+        <div class="timeline-item"><div class="timeline-time">01</div><div class="timeline-content"><div class="timeline-title">Recap & SOC Workflow</div><div class="timeline-desc">Review pertemuan 1, kenapa kita butuh tools</div></div></div>
+        <div class="timeline-item"><div class="timeline-time">02</div><div class="timeline-content"><div class="timeline-title">Tools Ecosystem Overview</div><div class="timeline-desc">Kategori tools dan bagaimana saling connect</div></div></div>
+      </div>
+    </div>
+    <div>
+      <div style="margin-bottom:14px"><span class="badge badge-blue">Hands-on — 90 min</span></div>
+      <div class="timeline">
+        <div class="timeline-item"><div class="timeline-time">03</div><div class="timeline-content"><div class="timeline-title">VPS Demo</div><div class="timeline-desc">Wazuh Dashboard, DFIR-IRIS, TheHive</div></div></div>
+        <div class="timeline-item"><div class="timeline-time">04</div><div class="timeline-content"><div class="timeline-title">Install Bareng</div><div class="timeline-desc">Wazuh Agent + Wireshark + CTI Accounts</div></div></div>
+        <div class="timeline-item"><div class="timeline-time">05</div><div class="timeline-content"><div class="timeline-title">Live Test</div><div class="timeline-desc">Trigger alert, verify di dashboard</div></div></div>
+        <div class="timeline-item"><div class="timeline-time">06</div><div class="timeline-content"><div class="timeline-title">Wrap-up & Preview</div><div class="timeline-desc">Checklist, practice platform, tugas</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 3 — SOC WORKFLOW RECAP -->
+<!-- ═══════════════════════════════════════════ -->
+<section>
+  <div class="slide-header">
+    <div class="icon" style="background:var(--green-light)">🔄</div>
+    <h2>SOC Analyst Workflow</h2>
+    <span class="slide-section overview">Recap</span>
+    <span class="slide-num">03</span>
+  </div>
+  <p>Setiap insiden keamanan mengikuti flow yang sama. Tools yang kita install hari ini men-support setiap tahap.</p>
+  <div class="flow-row" style="margin:24px 0">
+    <div class="flow-step active">1. Detect</div><div class="flow-arrow">→</div>
+    <div class="flow-step">2. Triage</div><div class="flow-arrow">→</div>
+    <div class="flow-step">3. Investigate</div><div class="flow-arrow">→</div>
+    <div class="flow-step">4. Contain</div><div class="flow-arrow">→</div>
+    <div class="flow-step">5. Eradicate</div><div class="flow-arrow">→</div>
+    <div class="flow-step">6. Recover</div><div class="flow-arrow">→</div>
+    <div class="flow-step">7. Document</div>
+  </div>
+  <div class="highlight-box">
+    <strong>Tanpa tools =</strong> blind. SOC analyst tanpa SIEM itu seperti dokter tanpa stetoskop — bisa kerja, tapi nggak efektif dan banyak yang terlewat.
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 4 — TOOLS ECOSYSTEM -->
+<!-- ═══════════════════════════════════════════ -->
+<section>
+  <div class="slide-header">
+    <div class="icon" style="background:var(--green-light)">🧰</div>
+    <h2>Tools Ecosystem</h2>
+    <span class="slide-section overview">Overview</span>
+    <span class="slide-num">04</span>
+  </div>
+  <p>Setiap kategori tools punya peran spesifik di workflow SOC:</p>
+  <div class="grid-3" style="margin-top:20px">
+    <div class="tool-card vps">
+      <div class="tool-icon">📊</div>
+      <div class="tool-name">SIEM</div>
+      <div class="tool-desc">Collect & analyze logs dari semua sumber. <strong>Wazuh</strong> & <strong>Splunk</strong></div>
+    </div>
+    <div class="tool-card vps">
+      <div class="tool-icon">🛡️</div>
+      <div class="tool-name">EDR</div>
+      <div class="tool-desc">Monitor endpoint real-time. <strong>Wazuh Agent</strong></div>
+    </div>
+    <div class="tool-card vps">
+      <div class="tool-icon">📋</div>
+      <div class="tool-name">Ticketing</div>
+      <div class="tool-desc">Dokumentasi insiden & workflow. <strong>DFIR-IRIS</strong> & <strong>TheHive</strong></div>
+    </div>
+    <div class="tool-card web">
+      <div class="tool-icon">🔍</div>
+      <div class="tool-name">CTI</div>
+      <div class="tool-desc">Enrichment IOC. <strong>VirusTotal</strong>, <strong>AbuseIPDB</strong>, dll</div>
+    </div>
+    <div class="tool-card install">
+      <div class="tool-icon">🔬</div>
+      <div class="tool-name">Forensics</div>
+      <div class="tool-desc">Deep analysis. <strong>Wireshark</strong>, <strong>Volatility</strong>, <strong>Autopsy</strong></div>
+    </div>
+    <div class="tool-card web">
+      <div class="tool-icon">🎯</div>
+      <div class="tool-name">Practice</div>
+      <div class="tool-desc">Hands-on lab. <strong>LetsDefend</strong>, <strong>TryHackMe</strong></div>
+    </div>
+  </div>
+  <div style="display:flex;gap:12px;margin-top:18px;justify-content:center">
+    <span class="badge badge-green">🟢 VPS = sudah jalan</span>
+    <span class="badge badge-blue">🔵 Install di laptop</span>
+    <span class="badge badge-purple">🟣 Web-based</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 5 — TOOLS MAP -->
+<!-- ═══════════════════════════════════════════ -->
+<section>
+  <div class="slide-header">
+    <div class="icon" style="background:var(--green-light)">🗺️</div>
+    <h2>Workflow → Tools Mapping</h2>
+    <span class="slide-section overview">Overview</span>
+    <span class="slide-num">05</span>
+  </div>
+  <table style="width:100%;border-collapse:separate;border-spacing:0;border-radius:10px;overflow:hidden;font-size:0.78em">
+    <thead>
+      <tr style="background:var(--dark-fixed);color:#fff">
+        <th style="padding:10px 16px">Workflow Step</th>
+        <th style="padding:10px 16px">Tool</th>
+        <th style="padding:10px 16px">Yang Dilakukan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:8px 16px;border-top:1px solid var(--border)"><strong>Detect</strong></td><td style="padding:8px 16px;border-top:1px solid var(--border);color:var(--green);font-weight:600">Wazuh / Splunk</td><td style="padding:8px 16px;border-top:1px solid var(--border)">Alert muncul di SIEM dari log endpoint</td></tr>
+      <tr style="background:var(--bg-card)"><td style="padding:8px 16px"><strong>Triage</strong></td><td style="padding:8px 16px;color:var(--green);font-weight:600">SIEM + CTI</td><td style="padding:8px 16px">Cek context, lookup IOC di VT/AbuseIPDB</td></tr>
+      <tr><td style="padding:8px 16px;border-top:1px solid var(--border)"><strong>Investigate</strong></td><td style="padding:8px 16px;border-top:1px solid var(--border);color:var(--green);font-weight:600">Wireshark / Volatility</td><td style="padding:8px 16px;border-top:1px solid var(--border)">Deep analysis network/memory</td></tr>
+      <tr style="background:var(--bg-card)"><td style="padding:8px 16px"><strong>Contain</strong></td><td style="padding:8px 16px;color:var(--green);font-weight:600">Wazuh Active Response</td><td style="padding:8px 16px">Block IP, isolate endpoint</td></tr>
+      <tr><td style="padding:8px 16px;border-top:1px solid var(--border)"><strong>Document</strong></td><td style="padding:8px 16px;border-top:1px solid var(--border);color:var(--green);font-weight:600">DFIR-IRIS / TheHive</td><td style="padding:8px 16px;border-top:1px solid var(--border)">Case management, IOC tracking, report</td></tr>
+    </tbody>
+  </table>
+  <div class="highlight-box" style="margin-top:20px">
+    <strong>Hari ini:</strong> Kita setup fondasi ini semua. Setelah ini kalian punya toolkit lengkap untuk investigasi.
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 6 — VPS ACCESS -->
+<!-- ═══════════════════════════════════════════ -->
+<section>
+  <div class="slide-header">
+    <div class="icon" style="background:var(--green-light)">🖥️</div>
+    <h2>VPS — Shared Access</h2>
+    <span class="slide-section tools">Tools Setup</span>
+    <span class="slide-num">06</span>
+  </div>
+  <p>Tools berat sudah di-deploy di VPS. Kalian tinggal akses — nggak perlu install.</p>
+  <div class="grid-3" style="margin-top:20px">
+    <div class="card card-green">
+      <h3 style="margin:0 0 8px">📊 Wazuh Dashboard</h3>
+      <p style="font-family:var(--mono);font-size:0.78em;color:var(--green);margin:0 0 6px">https://wazuh.[VPS_IP]</p>
+      <p style="font-size:0.72em;color:var(--text-muted);margin:0">SIEM — lihat semua alert & events</p>
+    </div>
+    <div class="card card-green">
+      <h3 style="margin:0 0 8px">📋 DFIR-IRIS</h3>
+      <p style="font-family:var(--mono);font-size:0.78em;color:var(--green);margin:0 0 6px">https://iris.[VPS_IP]</p>
+      <p style="font-size:0.72em;color:var(--text-muted);margin:0">Case management — dokumentasi insiden</p>
+    </div>
+    <div class="card card-green">
+      <h3 style="margin:0 0 8px">🎫 TheHive</h3>
+      <p style="font-family:var(--mono);font-size:0.78em;color:var(--green);margin:0 0 6px">https://thehive.[VPS_IP]</p>
+      <p style="font-size:0.72em;color:var(--text-muted);margin:0">Alert → Case → Task workflow</p>
+    </div>
+  </div>
+  <div class="highlight-box warn" style="margin-top:20px">
+    <strong>📌 Credentials:</strong> akan dibagikan sekarang. Simpan baik-baik — ini akses kalian selama training.
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 7 — WHAT WE'LL INSTALL TODAY -->
+<!-- ═══════════════════════════════════════════ -->
+<section>
+  <div class="slide-header">
+    <div class="icon" style="background:var(--blue-light)">⬇️</div>
+    <h2>Yang Kita Install Hari Ini</h2>
+    <span class="slide-section handson">Hands-on</span>
+    <span class="slide-num">07</span>
+  </div>
+  <div class="grid-2" style="margin-top:16px">
+    <div>
+      <h3 style="color:var(--blue)">🔵 Install di Laptop</h3>
+      <div class="timeline">
+        <div class="timeline-item"><div class="timeline-time">20 min</div><div class="timeline-content"><div class="timeline-title">Wazuh Agent</div><div class="timeline-desc">Connect laptop ke SIEM → alert langsung muncul</div></div></div>
+        <div class="timeline-item"><div class="timeline-time">10 min</div><div class="timeline-content"><div class="timeline-title">Wireshark</div><div class="timeline-desc">Packet capture → lihat semua network traffic</div></div></div>
+      </div>
+    </div>
+    <div>
+      <h3 style="color:var(--purple)">🟣 Register Online</h3>
+      <div class="timeline">
+        <div class="timeline-item"><div class="timeline-time">10 min</div><div class="timeline-content"><div class="timeline-title">VirusTotal + AbuseIPDB</div><div class="timeline-desc">Wajib — enrichment IOC setiap hari</div></div></div>
+        <div class="timeline-item"><div class="timeline-time">5 min</div><div class="timeline-content"><div class="timeline-title">LetsDefend / TryHackMe</div><div class="timeline-desc">Practice platform — PR sebelum pertemuan 3</div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="highlight-box blue" style="margin-top:16px">
+    <strong>📖 Cheat Sheet:</strong> Buka <code>SOC Tools Guide</code> — semua tutorial install ada di situ. Pilih tab sesuai OS kalian (Linux / Windows / macOS).
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 8 — INSTALL WAZUH AGENT -->
+<!-- ═══════════════════════════════════════════ -->
+<section>
+  <div class="slide-header">
+    <div class="icon" style="background:var(--blue-light)">🛡️</div>
+    <h2>Install: Wazuh Agent</h2>
+    <span class="slide-section handson">Hands-on</span>
+    <span class="slide-num">08</span>
+  </div>
+  <div class="grid-2">
+    <div>
+      <h3>Apa yang dilakukan Wazuh Agent?</h3>
+      <ul style="font-size:0.82em">
+        <li>Monitor <strong>proses</strong> yang berjalan</li>
+        <li>Track <strong>koneksi jaringan</strong></li>
+        <li>Deteksi <strong>perubahan file</strong> penting</li>
+        <li>Kumpulkan <strong>log</strong> OS & aplikasi</li>
+        <li>Kirim semua ke <strong>SIEM dashboard</strong></li>
+      </ul>
+      <div class="highlight-box" style="margin-top:14px">
+        <strong>Milestone:</strong> Nama laptop kalian muncul di Wazuh Dashboard dengan status <span style="color:var(--green)">● Active</span>
+      </div>
+    </div>
+    <div>
+      <h3>Steps</h3>
+      <ol style="font-size:0.82em">
+        <li>Buka cheat sheet → <strong>Wazuh → Getting Started</strong></li>
+        <li>Klik section <strong>"Install Wazuh Agent"</strong></li>
+        <li>Pilih tab OS kalian (Linux / Windows / macOS)</li>
+        <li>Ganti <code>[MANAGER_IP]</code> dengan IP yang gua kasih</li>
+        <li>Jalankan semua command</li>
+        <li>Cek di Dashboard → <strong>Agents</strong></li>
+      </ol>
+      <p style="font-size:0.72em;color:var(--text-muted);margin-top:10px">⏱ Estimasi: 15-20 menit termasuk troubleshoot</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 9 — INSTALL WIRESHARK -->
+<!-- ═══════════════════════════════════════════ -->
+<section>
+  <div class="slide-header">
+    <div class="icon" style="background:var(--blue-light)">🦈</div>
+    <h2>Install: Wireshark</h2>
+    <span class="slide-section handson">Hands-on</span>
+    <span class="slide-num">09</span>
+  </div>
+  <div class="grid-2">
+    <div>
+      <h3>Network Packet Analyzer</h3>
+      <p style="font-size:0.82em">Capture semua packet di network interface. Lihat data mentah yang lewat — dari HTTP request sampai DNS query.</p>
+      <div class="highlight-box" style="margin-top:14px">
+        <strong>Quick test:</strong> Start capture → buka browser → stop → lihat packet list. Itu network traffic kalian.
+      </div>
+    </div>
+    <div>
+      <h3>Steps</h3>
+      <ol style="font-size:0.82em">
+        <li>Buka cheat sheet → <strong>Wireshark → Install</strong></li>
+        <li>Pilih tab OS</li>
+        <li>Install & restart jika diminta</li>
+        <li>Open Wireshark → pilih network interface</li>
+        <li>Start capture 30 detik → Stop</li>
+        <li>Lihat hasilnya! 🎉</li>
+      </ol>
+      <p style="font-size:0.72em;color:var(--text-muted);margin-top:10px">⏱ Estimasi: 10 menit</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 10 — CTI REGISTRATION -->
+<!-- ═══════════════════════════════════════════ -->
+<section>
+  <div class="slide-header">
+    <div class="icon" style="background:var(--purple-light)">🔍</div>
+    <h2>Register: CTI Platforms</h2>
+    <span class="slide-section handson">Hands-on</span>
+    <span class="slide-num">10</span>
+  </div>
+  <p>Platform ini akan kalian pakai <strong>setiap hari</strong> sebagai SOC analyst. Semua gratis.</p>
+  <div class="grid-2" style="margin-top:16px">
+    <div class="card" style="border-top:3px solid var(--red)">
+      <h3 style="margin-top:0">🔴 Wajib Register</h3>
+      <ul style="font-size:0.82em;margin:0">
+        <li><strong>VirusTotal</strong> — scan file/URL/hash ke 70+ engine<br><span style="font-size:0.8em;color:var(--text-muted)">virustotal.com → Sign Up</span></li>
+        <li><strong>AbuseIPDB</strong> — cek reputasi IP<br><span style="font-size:0.8em;color:var(--text-muted)">abuseipdb.com → Sign Up</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">🟡 Recommended</h3>
+      <ul style="font-size:0.82em;margin:0">
+        <li><strong>Any.run</strong> — malware sandbox<br><span style="font-size:0.8em;color:var(--text-muted)">any.run → free community tier</span></li>
+        <li><strong>ThreatFox</strong> — IOC database<br><span style="font-size:0.8em;color:var(--text-muted)">threatfox.abuse.ch</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="highlight-box" style="margin-top:16px">
+    <strong>Quick test bareng:</strong> Setelah register, kita lookup IP <code>8.8.8.8</code> di AbuseIPDB — lihat hasilnya bersama.
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 11 — LIVE DEMO: TRIGGER ALERT -->
+<!-- ═══════════════════════════════════════════ -->
+<section>
+  <div class="slide-header">
+    <div class="icon" style="background:var(--accent-light)">⚡</div>
+    <h2>Live Demo: Trigger Alert</h2>
+    <span class="slide-section handson">Hands-on</span>
+    <span class="slide-num">11</span>
+  </div>
+  <p>Sekarang kita buktikan bahwa semuanya connected. Gua akan trigger aktivitas mencurigakan, dan kalian lihat alert-nya muncul di Wazuh Dashboard.</p>
+  <div class="grid-2" style="margin-top:20px">
+    <div>
+      <h3 style="color:var(--red)">🔴 Attack Simulation</h3>
+      <div style="background:var(--dark-fixed);color:#4ade80;padding:16px 20px;border-radius:8px;font-family:var(--mono);font-size:0.78em;line-height:1.8">
+        <span style="color:var(--text-faint)"># Port scan dari terminal</span><br>
+        nmap -sV localhost<br><br>
+        <span style="color:var(--text-faint)"># Atau trigger brute force</span><br>
+        ssh invalid@[VPS_IP]<br>
+        ssh invalid@[VPS_IP]<br>
+        ssh invalid@[VPS_IP]
+      </div>
+    </div>
+    <div>
+      <h3 style="color:var(--green)">🟢 What to See</h3>
+      <ol style="font-size:0.85em">
+        <li>Buka <strong>Wazuh Dashboard</strong></li>
+        <li>Navigate ke <strong>Threat Intelligence → Alerts</strong></li>
+        <li>Filter: <code>rule.level: >= 7</code></li>
+        <li>Alert muncul dengan detail: source IP, timestamp, rule description</li>
+      </ol>
+      <div class="highlight-box" style="margin-top:14px">
+        <strong>Ini yang terjadi setiap hari di SOC.</strong> Alert masuk, analyst investigate.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 12 — PRACTICE PLATFORMS -->
+<!-- ═══════════════════════════════════════════ -->
+<section>
+  <div class="slide-header">
+    <div class="icon" style="background:var(--purple-light)">🎯</div>
+    <h2>Practice Platforms</h2>
+    <span class="slide-section next">Homework</span>
+    <span class="slide-num">12</span>
+  </div>
+  <p>Register di minimal <strong>satu platform</strong> sebelum pertemuan berikutnya:</p>
+  <div class="grid-3" style="margin-top:16px">
+    <div class="card" style="border-top:3px solid var(--green);text-align:center">
+      <div style="font-size:1.5em;margin-bottom:8px">🏆</div>
+      <h3 style="margin:0 0 6px">LetsDefend</h3>
+      <p style="font-size:0.72em;color:var(--text-muted);margin:0 0 8px">Simulasi SOC paling realistis</p>
+      <span class="badge badge-green">Recommended #1</span>
+    </div>
+    <div class="card" style="border-top:3px solid var(--blue);text-align:center">
+      <div style="font-size:1.5em;margin-bottom:8px">🎓</div>
+      <h3 style="margin:0 0 6px">TryHackMe</h3>
+      <p style="font-size:0.72em;color:var(--text-muted);margin:0 0 8px">Paling beginner-friendly</p>
+      <span class="badge badge-blue">SOC Level 1 path</span>
+    </div>
+    <div class="card" style="border-top:3px solid var(--accent);text-align:center">
+      <div style="font-size:1.5em;margin-bottom:8px">💪</div>
+      <h3 style="margin:0 0 6px">CyberDefenders</h3>
+      <p style="font-size:0.72em;color:var(--text-muted);margin:0 0 8px">Blue team CTF challenges</p>
+      <span class="badge badge-accent">For extra challenge</span>
+    </div>
+  </div>
+  <div class="highlight-box warn" style="margin-top:16px">
+    <strong>🏠 PR:</strong> Selesaikan 1 room/challenge sebelum pertemuan 3. Share screenshot completion di group.
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 13 — VERIFICATION CHECKLIST -->
+<!-- ═══════════════════════════════════════════ -->
+<section>
+  <div class="slide-header">
+    <div class="icon" style="background:var(--green-light)">✅</div>
+    <h2>Verification Checklist</h2>
+    <span class="slide-section tools">Wrap-up</span>
+    <span class="slide-num">13</span>
+  </div>
+  <p>Sebelum pulang, pastikan semua ini <strong>done</strong>:</p>
+  <div class="grid-2" style="margin-top:16px">
+    <div>
+      <h3 style="color:var(--green)">🟢 VPS Access</h3>
+      <ul class="checklist">
+        <li>Bisa login ke Wazuh Dashboard</li>
+        <li>Bisa login ke DFIR-IRIS</li>
+        <li>Bisa login ke TheHive</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="color:var(--blue)">🔵 Installed</h3>
+      <ul class="checklist">
+        <li>Wazuh Agent connected (status Active)</li>
+        <li>Wireshark installed & bisa capture</li>
+      </ul>
+    </div>
+  </div>
+  <div class="grid-2" style="margin-top:16px">
+    <div>
+      <h3 style="color:var(--purple)">🟣 Registered</h3>
+      <ul class="checklist">
+        <li>VirusTotal account</li>
+        <li>AbuseIPDB account</li>
+        <li>1 practice platform (LetsDefend / THM)</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="color:var(--accent)">📖 Reference</h3>
+      <ul class="checklist">
+        <li>SOC Tools Guide bookmarked</li>
+        <li>PR: 1 challenge/room selesai</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 14 — PREVIEW NEXT -->
+<!-- ═══════════════════════════════════════════ -->
+<section>
+  <div class="slide-header">
+    <div class="icon" style="background:var(--accent-light)">👀</div>
+    <h2>Preview: Pertemuan 3</h2>
+    <span class="slide-section next">Next</span>
+    <span class="slide-num">14</span>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;text-align:center;margin-top:40px">
+    <h3 style="font-size:1.6em;margin-bottom:16px">🔍 First Investigation</h3>
+    <p style="font-size:1.1em;max-width:600px;margin-bottom:32px">Ada laporan email phishing masuk. Kalian akan investigate <strong>end-to-end</strong> — dari analisis email sampai dokumentasi di IRIS.</p>
+    <div class="flow-row">
+      <div class="flow-step">📧 Email masuk</div><div class="flow-arrow">→</div>
+      <div class="flow-step">🔍 Analisis header</div><div class="flow-arrow">→</div>
+      <div class="flow-step">🔎 Lookup IOC</div><div class="flow-arrow">→</div>
+      <div class="flow-step active">📋 Document di IRIS</div>
+    </div>
+    <p style="margin-top:32px;font-size:0.85em;color:var(--text-muted)">Semua tools yang diinstall hari ini akan dipakai. Make sure everything works!</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SLIDE 15 — CLOSING -->
+<!-- ═══════════════════════════════════════════ -->
+<section>
+  <div class="title-slide">
+    <img src="../favicon.png" alt="JagoanSiber" class="title-logo">
+    <h1 class="title-main" style="font-size:2.2em !important">Questions?</h1>
+    <p class="title-sub" style="margin-bottom:40px !important">Ada yang stuck? Tanya sekarang atau di group chat.</p>
+    <div style="display:flex;gap:24px">
+      <div class="card" style="text-align:center;padding:20px 32px">
+        <div style="font-size:1.5em;margin-bottom:6px">📖</div>
+        <div style="font-weight:700;font-size:0.9em">Cheat Sheet</div>
+        <div style="font-size:0.72em;color:var(--text-muted)">SOC Tools Guide</div>
+      </div>
+      <div class="card" style="text-align:center;padding:20px 32px">
+        <div style="font-size:1.5em;margin-bottom:6px">💬</div>
+        <div style="font-weight:700;font-size:0.9em">Group Chat</div>
+        <div style="font-size:0.72em;color:var(--text-muted)">Tanya & troubleshoot</div>
+      </div>
+    </div>
+    <div class="title-tagline" style="margin-top:40px">Detect. Investigate. Respond.</div>
+  </div>
+</section>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+Reveal.initialize({
+  hash: true,
+  width: 1280,
+  height: 720,
+  margin: 0.04,
+  transition: 'fade',
+  transitionSpeed: 'fast',
+  controlsTutorial: false,
+  progress: true,
+  center: true,
+});
+
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', current === 'dark' ? '' : 'dark');
+}
+
+function toggleFullscreen() {
+  if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+  else document.exitFullscreen();
+}
+</script>
+</body>
+</html>

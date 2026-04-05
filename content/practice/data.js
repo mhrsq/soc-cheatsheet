@@ -1,0 +1,18 @@
+// Practice Platforms: BTLO, THM, HTB, LetsDefend, CyberDefenders
+Object.assign(TOOLS, {
+'blue-team-platforms': {
+  name: 'Blue Team Practice Platforms',
+  subtitle: 'BTLO, TryHackMe, HackTheBox, LetsDefend, CyberDefenders — perbandingan lengkap dan rekomendasi path.',
+  tags: ['tag-platform'], tagLabels: ['Practice'],
+  sections: [
+    { id: 'overview', title: 'Kenapa Perlu Hands-On?', html: `<p>Teori tanpa hands-on = kosong. Platform ini menyediakan lab environment dengan skenario nyata — analisis log, IR, memory forensics. Semua dari browser.</p>` },
+    { id: 'comparison', title: 'Perbandingan', html: `<table class="ref-table"><tr><th>Platform</th><th>Fokus</th><th>Harga</th><th>Level</th><th>Best For</th></tr><tr><td>BTLO</td><td>100% Blue</td><td>Free + Pro ($35/bln)</td><td>Beginner–Advanced</td><td>Pure defensive</td></tr><tr><td>TryHackMe</td><td>Red + Blue</td><td>Free + Premium ($14/bln)</td><td>Beginner–Intermediate</td><td>Pemula</td></tr><tr><td>HackTheBox</td><td>Red + Blue</td><td>Free + VIP ($14/bln)</td><td>Intermediate–Advanced</td><td>Challenge serius</td></tr><tr><td>LetsDefend</td><td>SOC Simulation</td><td>Free + Pro ($25/bln)</td><td>Beginner–Intermediate</td><td>SOC paling realistis</td></tr><tr><td>CyberDefenders</td><td>Blue CTF</td><td>Free + Pro</td><td>Intermediate–Advanced</td><td>Forensics, DFIR</td></tr></table>` },
+    { id: 'btlo', title: 'BTLO', html: `<p><a href="https://blueteamlabs.online" target="_blank" style="color:var(--accent)">blueteamlabs.online</a> — 100% defensive. Categories: SecOps, DFIR, Threat Intel, RE.</p><ul><li><strong>+</strong> Pure blue team, skenario realistis</li><li><strong>−</strong> Advanced butuh Pro</li><li><strong>Path:</strong> Investigation → Incident Response</li></ul>` },
+    { id: 'thm', title: 'TryHackMe', html: `<p><a href="https://tryhackme.com" target="_blank" style="color:var(--accent)">tryhackme.com</a> — Paling beginner-friendly. Guided rooms, AttackBox.</p><ul><li><strong>Blue paths:</strong> SOC Level 1, SOC Level 2, Cyber Defense</li><li><strong>+</strong> Guided, browser VM, komunitas besar</li><li><strong>Path:</strong> SOC Level 1 → Cyber Defense</li></ul>` },
+    { id: 'htb', title: 'HackTheBox', html: `<p><a href="https://hackthebox.com" target="_blank" style="color:var(--accent)">hackthebox.com</a> — Sherlock (DFIR) + Defensive Track.</p><ul><li><strong>+</strong> Quality tinggi, industry-recognized</li><li><strong>−</strong> Steep learning curve</li><li><strong>Path:</strong> Sherlock DFIR labs</li></ul>` },
+    { id: 'letsdefend', title: 'LetsDefend', html: `<p><a href="https://letsdefend.io" target="_blank" style="color:var(--accent)">letsdefend.io</a> — SOC simulation: SIEM dashboard, alert queue, case management, email analysis.</p><ul><li><strong>+</strong> Paling mirip kerja beneran</li><li><strong>Path:</strong> SOC Analyst learning path</li></ul>` },
+    { id: 'cyberdefenders', title: 'CyberDefenders', html: `<p><a href="https://cyberdefenders.org" target="_blank" style="color:var(--accent)">cyberdefenders.org</a> — CTF blue team. Real forensic artifacts.</p><ul><li><strong>+</strong> Quality sangat tinggi</li><li><strong>−</strong> Tidak guided</li><li><strong>Path:</strong> Easy → pakai Volatility + Wireshark + Autopsy</li></ul>` },
+    { id: 'recommendation', title: 'Rekomendasi Path', html: `<ol><li><strong>Pemula:</strong> THM SOC Level 1 → LetsDefend SOC Analyst</li><li><strong>Basic:</strong> BTLO Investigation → CyberDefenders Easy</li><li><strong>Serius:</strong> HTB Sherlock + CyberDefenders Medium</li><li><strong>Maintain:</strong> BTLO + CyberDefenders tiap minggu</li></ol><p>Kombinasikan minimal 2 platform.</p>` }
+  ]
+}
+});

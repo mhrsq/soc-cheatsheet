@@ -1,0 +1,14 @@
+# Old monolithic files (kept as backup, don't track)
+/data.js
+/soc-docs.html
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+*.swp
+*.swo
+*~

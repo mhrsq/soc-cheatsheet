@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOC Tools Guide — JagoanSiber</title>
+  <meta name="description" content="Panduan lengkap tools SOC Analyst: Wazuh, Splunk, DFIR-IRIS, TheHive, Wireshark, Volatility, MITRE ATT&CK, IR Playbooks, dan lainnya.">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="progress-bar" id="progressBar"></div>
+
+  <header>
+    <button class="sidebar-toggle" onclick="toggleSidebar()" title="Toggle sidebar">☰</button>
+    <div class="logo" onclick="navigate('home')">
+      <img src="favicon.png" alt="JagoanSiber" class="logo-img">
+      <div>
+        <div class="logo-text">SOC Tools Guide</div>
+        <div class="logo-sub">JagoanSiber</div>
+      </div>
+    </div>
+    <div class="header-sep"></div>
+    <button class="search-trigger" onclick="openSearch()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span>Cari tools...</span>
+      <kbd>Ctrl+K</kbd>
+    </button>
+    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle theme">🌙</button>
+  </header>
+
+  <div class="search-overlay" id="searchOverlay" onclick="closeSearch()">
+    <div class="search-box" onclick="event.stopPropagation()">
+      <div class="search-input-row">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" class="search-input" id="searchInput" placeholder="Cari tools, commands, event IDs..." oninput="handleSearchInput(event)" onkeydown="handleSearchKey(event)" autocomplete="off" spellcheck="false">
+        <span class="search-esc">ESC</span>
+      </div>
+      <div class="search-results" id="searchResults"><div class="search-empty">Ketik untuk mulai mencari...</div></div>
+      <div class="search-hint"><span><kbd>↑↓</kbd> Navigate</span><span><kbd>↵</kbd> Open</span><span><kbd>ESC</kbd> Close</span></div>
+    </div>
+  </div>
+
+  <div class="layout">
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeMobileMenu()"></div>
+    <nav class="sidebar-left collapsed" id="sidebarLeft">
+      <div class="nav-home active" id="navHome" onclick="navigate('home')">
+        <span>🏠</span> <span class="nav-home-text">Overview</span>
+      </div>
+      <div id="sidebarNav"></div>
+    </nav>
+    <main class="main" id="mainWrapper"><div id="main"></div></main>
+    <aside class="sidebar-right" id="tocSidebar">
+      <div class="toc-label">On this page</div>
+      <div id="tocList"></div>
+    </aside>
+  </div>
+
+  <!-- Content modules (order matters: _nav first, then content files) -->
+  <script src="content/_nav.js"></script>
+  <script src="content/fundamentals/data.js"></script>
+  <script src="content/siem/data.js"></script>
+  <script src="content/edr/data.js"></script>
+  <script src="content/ticketing/data.js"></script>
+  <script src="content/cti/data.js"></script>
+  <script src="content/forensics/data.js"></script>
+  <script src="content/practice/data.js"></script>
+  <script src="content/reference/data.js"></script>
+  <script src="content/playbooks/data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
