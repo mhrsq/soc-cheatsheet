@@ -201,18 +201,22 @@ Standalone article added to Fundamentals section:
 
 ## VPS Deployment
 
-**Server:** OVH VPS — 141.94.36.151 (Ubuntu 24.04, 4 CPU, 8GB RAM)
-
-### Services Running
+### VPS 1 — 141.94.36.151 (Cheatsheet, IRIS, Splunk, CTFd)
 | Service | Port | Access |
 |---------|------|--------|
 | **Nginx** | 80 | Reverse proxy + static file server |
-| **Wazuh** (Manager + Indexer + Dashboard) | 443, 1514, 1515, 514, 55000, 9200 | https://141.94.36.151 |
 | **DFIR-IRIS** | 8443 | https://141.94.36.151:8443 |
 | **Splunk** | 8001 (→8000), 8089 | http://141.94.36.151:8001 |
 | **CTFd** | 8000 | http://141.94.36.151:8000 |
 | **Cheatsheet** | 80 /cheatsheet/ | http://141.94.36.151/cheatsheet/ |
 | **Slides** | 80 /slides/ | http://141.94.36.151/slides/ |
+
+### VPS 2 — 141.94.36.152 (Wazuh)
+| Service | Port | Access |
+|---------|------|--------|
+| **Wazuh Dashboard** | 443 | https://141.94.36.152 |
+| **Wazuh Manager** | 1514, 1515, 55000 | Agent registration + API |
+| **Wazuh Indexer** | 9200 | Internal |
 
 ### Deployment Flow
 ```bash
