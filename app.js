@@ -184,13 +184,7 @@ function renderHomePage() {
           <div class="wf-num">7</div><div class="wf-name">Document</div><div class="wf-desc">Case report</div>
         </div>
       </div>
-      <div class="wf-return">
-        <div class="wf-return-arrow">
-          <div class="wf-return-line"></div>
-          ↩ Lessons learned → update detection rules → kembali ke Detect
-          <div class="wf-return-line"></div>
-        </div>
-      </div>
+      <div style="text-align:center;margin-top:16px;font-size:10px;font-family:var(--mono);color:var(--text3);letter-spacing:0.04em">Based on NIST SP 800-61 — Computer Security Incident Handling Guide</div>
     </div>
     ${buildHomePage()}`;
 }
