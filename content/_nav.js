@@ -19,7 +19,8 @@ const NAV_SECTIONS = [
       { id: 'network-fundamentals', name: 'Network Basics', color: '#34d399' },
       { id: 'email-phishing', name: 'Email & Phishing', color: '#34d399' },
       { id: 'alert-triage', name: 'Alert Triage', color: '#34d399' },
-      { id: 'osint-soc', name: 'OSINT for SOC', color: '#34d399' }
+      { id: 'osint-soc', name: 'OSINT for SOC', color: '#34d399' },
+      { id: 'av-edr-ndr-xdr', name: 'AV vs EDR vs NDR vs XDR', color: '#34d399' }
     ]
   },
   {
@@ -110,7 +111,8 @@ const HOME_CATEGORIES = [
     { id: 'network-fundamentals', name: 'Network Basics', hosted: false, desc: 'OSI model, TCP handshake, DNS, HTTP anatomy — fondasi network security.' },
     { id: 'email-phishing', name: 'Email & Phishing', hosted: false, desc: 'Analisis email header, SPF/DKIM/DMARC, URL analysis, attachment triage.' },
     { id: 'alert-triage', name: 'Alert Triage', hosted: false, desc: 'Decision framework: alert masuk → analisis → FP/TP → escalate/close.' },
-    { id: 'osint-soc', name: 'OSINT for SOC', hosted: false, desc: 'Shodan, Censys, WHOIS, passive DNS, Google dorking — investigasi aset.' }
+    { id: 'osint-soc', name: 'OSINT for SOC', hosted: false, desc: 'Shodan, Censys, WHOIS, passive DNS, Google dorking — investigasi aset.' },
+    { id: 'av-edr-ndr-xdr', name: 'AV vs EDR vs XDR', hosted: false, desc: 'Apa bedanya Antivirus, EDR, NDR, dan XDR? Kapan pakai yang mana.' }
   ]},
   { name: 'SIEM', tools: [
     { id: 'wazuh-overview', name: 'Wazuh', hosted: true, desc: 'Open source SIEM + EDR. Monitor log, detect threat, vulnerability management.' },

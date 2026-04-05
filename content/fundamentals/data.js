@@ -1346,6 +1346,278 @@ Authorization: hibp-api-key YOUR_KEY</code></pre></div>
 `}
 
   ] // end sections
-} // end osint-soc
+}, // end osint-soc
 
+// ═══════════════════════════════════════════
+// AV vs EDR vs NDR vs XDR
+// ═══════════════════════════════════════════
+'av-edr-ndr-xdr': {
+  name: 'Antivirus vs EDR vs NDR vs XDR',
+  subtitle: 'Apa bedanya? Kapan pakai yang mana? Evolusi endpoint & network security dari AV tradisional sampai XDR modern.',
+  tags: ['tag-reference'], tagLabels: ['Fundamentals'],
+  sections: [
+
+    { id: 'intro', title: 'Kenapa Ini Penting?',
+      html: `
+<p>Kalau baca job listing SOC analyst atau ikut meeting sama vendor, pasti ketemu istilah ini: AV, EDR, NDR, XDR. Semuanya solusi keamanan, tapi beda scope dan capability. Sebagai SOC analyst, kamu harus paham bedanya karena ini menentukan <strong>apa yang bisa kamu lihat</strong> dan <strong>apa yang bisa kamu lakukan</strong> saat investigasi.</p>
+
+<div class="callout callout-info"><strong>Analogi sederhana:</strong><br>
+• <strong>Antivirus</strong> = kunci pintu rumah — cuma cek siapa yang masuk, pakai daftar orang jahat yang dikenal<br>
+• <strong>EDR</strong> = CCTV + alarm + security guard di setiap ruangan — record semua aktivitas, bisa respond<br>
+• <strong>NDR</strong> = CCTV di jalanan dan lorong — monitor lalu lintas antar gedung, detect gerak-gerik mencurigakan<br>
+• <strong>XDR</strong> = command center yang integrasikan semua CCTV, alarm, dan guard — satu dashboard, satu response</div>
+` },
+
+    { id: 'comparison-table', title: 'Perbandingan Lengkap',
+      html: `
+<table class="ref-table">
+  <tr>
+    <th>Aspek</th>
+    <th>Antivirus (AV)</th>
+    <th>EDR</th>
+    <th>NDR</th>
+    <th>XDR</th>
+  </tr>
+  <tr>
+    <td><strong>Apa yang dimonitor</strong></td>
+    <td>File di disk endpoint</td>
+    <td>Semua aktivitas di endpoint (proses, file, registry, network, memory)</td>
+    <td>Network traffic (packet, flow, metadata)</td>
+    <td>Endpoint + Network + Cloud + Email + Identity — semuanya</td>
+  </tr>
+  <tr>
+    <td><strong>Cara deteksi</strong></td>
+    <td>Signature-based (cocokkan hash/pattern dengan database malware)</td>
+    <td>Behavioral analysis + signature + machine learning + IOC matching</td>
+    <td>Traffic analysis + anomaly detection + protocol inspection + ML</td>
+    <td>Korelasi cross-layer — gabungan semua metode di atas</td>
+  </tr>
+  <tr>
+    <td><strong>Response capability</strong></td>
+    <td>Quarantine/delete file. Itu doang.</td>
+    <td>Isolate endpoint, kill process, block hash, collect forensic data, remote shell</td>
+    <td>Block IP/port, segment network, alert SOC</td>
+    <td>Automated playbook across endpoint + network + cloud. Full orchestration.</td>
+  </tr>
+  <tr>
+    <td><strong>Visibility</strong></td>
+    <td>Low — cuma lihat file events</td>
+    <td>High di endpoint — process tree, command line, file changes, registry, network per-process</td>
+    <td>High di network — east-west traffic, lateral movement, C2, exfiltration</td>
+    <td>Full — korelasi data dari semua sumber</td>
+  </tr>
+  <tr>
+    <td><strong>Contoh produk</strong></td>
+    <td>Windows Defender, Kaspersky, Norton, Avast</td>
+    <td>CrowdStrike Falcon, SentinelOne, Microsoft Defender for Endpoint, Wazuh (open source)</td>
+    <td>Darktrace, Vectra AI, ExtraHop, Corelight, Zeek (open source)</td>
+    <td>Palo Alto Cortex XDR, Microsoft Sentinel + Defender, IntelliBron Orion, Trend Micro Vision One</td>
+  </tr>
+  <tr>
+    <td><strong>Harga</strong></td>
+    <td>Murah / gratis (built-in OS)</td>
+    <td>$$$ per endpoint/year</td>
+    <td>$$$$ per sensor/year</td>
+    <td>$$$$$ — paling mahal, tapi paling comprehensive</td>
+  </tr>
+</table>
+` },
+
+    { id: 'av-detail', title: 'Antivirus — Si Veteran',
+      html: `
+<p>Antivirus adalah solusi keamanan paling tua. Cara kerjanya sederhana:</p>
+<ol>
+  <li>Vendor maintain <strong>database signature</strong> — hash dan pattern dari malware yang dikenal</li>
+  <li>AV scan file di disk, cocokkan dengan database</li>
+  <li>Kalau cocok → <strong>quarantine atau delete</strong></li>
+  <li>Beberapa AV modern tambah <strong>heuristic</strong> (analisis behavior sederhana)</li>
+</ol>
+
+<h3>Kelebihan</h3>
+<ul>
+  <li>Simple, ringan, murah (sering gratis)</li>
+  <li>Efektif untuk <strong>known malware</strong> — virus, trojan, worm yang sudah ada di database</li>
+  <li>User-friendly, nggak butuh SOC team untuk manage</li>
+</ul>
+
+<h3>Kelemahan Fatal</h3>
+<ul>
+  <li><strong>Nggak bisa detect unknown malware</strong> — zero-day, custom malware, fileless attack = lolos semua</li>
+  <li><strong>Nggak ada visibility</strong> — kamu nggak tau proses apa yang jalan, koneksi kemana, registry apa yang diubah</li>
+  <li><strong>Nggak ada response capability</strong> — selain quarantine file, nggak bisa apa-apa</li>
+  <li><strong>Nggak ada forensic data</strong> — kalau ada insiden, nggak ada data untuk investigasi</li>
+</ul>
+
+<div class="callout callout-warn"><strong>Reality check:</strong> Antivirus saja sudah TIDAK CUKUP untuk environment enterprise sejak ~2015. Attacker modern pakai teknik yang bypass AV dengan mudah: fileless malware, living-off-the-land (LOLBins), process injection, memory-only payloads.</div>
+` },
+
+    { id: 'edr-detail', title: 'EDR — Game Changer',
+      html: `
+<p><strong>Endpoint Detection & Response</strong> lahir karena AV nggak cukup. EDR bukan pengganti AV — EDR adalah <em>evolusi</em> yang jauh lebih advanced.</p>
+
+<h3>Cara Kerja EDR</h3>
+<ol>
+  <li><strong>Agent di setiap endpoint</strong> — collect SEMUA telemetry: process creation (parent-child), file operations, registry changes, network connections per-process, DLL loads, memory allocations</li>
+  <li><strong>Data dikirim ke cloud/server</strong> — untuk analysis dan korelasi</li>
+  <li><strong>Detection engine</strong> — behavioral rules, machine learning, threat intel IOC matching, MITRE ATT&CK technique detection</li>
+  <li><strong>Response actions</strong> — isolate endpoint, kill process, block hash, remote shell, memory dump, timeline reconstruction</li>
+</ol>
+
+<h3>Apa yang Bisa Dilihat SOC Analyst dari EDR</h3>
+<div class="code-block"><div class="code-label"><span>Contoh Alert EDR</span></div><pre><code><span class="code-comment"># Alert: Suspicious PowerShell Execution</span>
+Process: powershell.exe (PID 4832)
+Parent:  cmd.exe (PID 2104) ← launched by excel.exe (PID 1560)
+Command: powershell -enc SQBFAFgAIAAoA...  (Base64 encoded)
+Network: Connected to 185.234.xx.xx:443 (C2 server)
+File:    Dropped payload.dll to C:\\Users\\victim\\AppData\\Local\\Temp
+MITRE:   T1059.001 (PowerShell), T1071.001 (Web C2), T1027 (Obfuscation)
+
+<span class="code-comment"># Dari alert ini, analyst bisa lihat FULL attack chain:</span>
+<span class="code-comment"># Email attachment (Excel) → Macro → cmd → PowerShell → C2 → Payload</span></code></pre></div>
+
+<h3>Wazuh sebagai EDR Open Source</h3>
+<p>Wazuh Agent yang sudah kita install adalah EDR — meskipun capability-nya tidak selengkap CrowdStrike atau SentinelOne, Wazuh bisa:</p>
+<ul>
+  <li>Process monitoring + command line logging</li>
+  <li>File Integrity Monitoring (FIM)</li>
+  <li>Rootkit detection</li>
+  <li>Vulnerability scanning</li>
+  <li>Active Response (block IP, disable account)</li>
+  <li>Sysmon integration (Windows) — mendekati level EDR komersial</li>
+</ul>
+<div class="callout callout-tip"><strong>Untuk lab & training:</strong> Wazuh + Sysmon = EDR yang sangat capable dan gratis. Untuk production enterprise, pertimbangkan EDR komersial yang punya ML dan cloud-native architecture.</div>
+` },
+
+    { id: 'ndr-detail', title: 'NDR — Network Perspective',
+      html: `
+<p><strong>Network Detection & Response</strong> fokus ke traffic jaringan. Kalau EDR lihat apa yang terjadi <em>di dalam</em> endpoint, NDR lihat apa yang terjadi <em>di antara</em> endpoint.</p>
+
+<h3>Cara Kerja NDR</h3>
+<ol>
+  <li><strong>Sensor/tap di network</strong> — mirror traffic dari switch (SPAN port) atau inline</li>
+  <li><strong>Deep Packet Inspection</strong> — analisis isi packet, bukan cuma header</li>
+  <li><strong>Flow analysis</strong> — pola koneksi: siapa bicara ke siapa, berapa sering, berapa banyak data</li>
+  <li><strong>Anomaly detection</strong> — ML detect deviasi dari baseline normal: unusual protocols, data volume spikes, beacon patterns</li>
+</ol>
+
+<h3>Kenapa NDR Penting</h3>
+<ul>
+  <li><strong>Lateral movement detection</strong> — attacker pindah dari endpoint A ke B lewat network. EDR per-endpoint mungkin miss, NDR lihat pattern-nya.</li>
+  <li><strong>C2 communication</strong> — beacon patterns (reguler interval ke IP tertentu) sangat visible di NDR</li>
+  <li><strong>Data exfiltration</strong> — unusual data transfer volume ke external IP</li>
+  <li><strong>East-west traffic</strong> — traffic antar server internal yang AV/EDR nggak cover</li>
+  <li><strong>Agentless</strong> — nggak perlu install apa-apa di endpoint. IoT, OT, legacy systems yang nggak bisa install agent = NDR satu-satunya visibility</li>
+</ul>
+
+<h3>Contoh NDR Alert</h3>
+<div class="code-block"><div class="code-label"><span>NDR Detection</span></div><pre><code><span class="code-comment"># Alert: DNS Tunneling Detected</span>
+Source:    10.0.5.42 (workstation-42)
+DNS Query: aGVsbG8gd29ybGQ.data.evil-c2.com
+Pattern:   50+ queries/min to same domain, avg subdomain length 45 chars
+Verdict:   Data exfiltration via DNS — encoded data in subdomain
+
+<span class="code-comment"># Alert: Potential Lateral Movement</span>
+Source:    10.0.5.42 → 10.0.5.100 (DC01)
+Protocol:  SMB + PsExec pattern detected
+Timing:    03:42 AM (outside business hours)
+Context:   Source IP had malware alert 2 hours ago</code></pre></div>
+
+<h3>Tools NDR</h3>
+<p>Untuk training, kita pakai <strong>Wireshark + tcpdump</strong> sebagai "manual NDR". Di enterprise, NDR biasanya appliance seperti Darktrace, Vectra, atau open source <strong>Zeek</strong> (network analysis framework).</p>
+` },
+
+    { id: 'xdr-detail', title: 'XDR — The Full Picture',
+      html: `
+<p><strong>Extended Detection & Response</strong> adalah evolusi terbaru. XDR bukan produk tunggal — ini <em>platform</em> yang mengintegrasikan data dari semua sumber keamanan ke satu tempat.</p>
+
+<h3>XDR = EDR + NDR + SIEM + SOAR + Cloud Security</h3>
+<p>Bayangkan punya semua ini di satu console:</p>
+<ul>
+  <li>EDR telemetry dari semua endpoint</li>
+  <li>Network traffic analysis dari semua sensor</li>
+  <li>Cloud workload data (AWS, Azure, GCP)</li>
+  <li>Email security alerts</li>
+  <li>Identity/authentication logs</li>
+  <li>Automated response playbooks</li>
+</ul>
+
+<h3>Kenapa XDR Muncul</h3>
+<p>Problem: SOC analyst punya 10 tab terbuka — SIEM di satu, EDR di satu, NDR di satu, email security di satu. Alert dari masing-masing nggak terkorelasi. Analyst harus manually pivot antar tool.</p>
+<p><strong>XDR menyelesaikan ini</strong> dengan otomatis korelasi alert dari semua sumber. Satu alert yang terjadi di email + endpoint + network = satu incident yang sudah terhubung.</p>
+
+<h3>Contoh Korelasi XDR</h3>
+<div class="code-block"><div class="code-label"><span>XDR Incident — Auto-correlated</span></div><pre><code><span class="code-comment"># XDR otomatis menghubungkan 4 alert jadi 1 incident:</span>
+
+1. [Email Gateway] Phishing email delivered to user@company.com
+   → Attachment: invoice.xlsm (SHA256: abc123...)
+
+2. [EDR] excel.exe spawned powershell.exe with encoded command
+   → Host: WORKSTATION-42, User: john.doe
+   → MITRE: T1059.001 (PowerShell Execution)
+
+3. [NDR] WORKSTATION-42 initiated connection to 185.234.xx.xx:443
+   → Beacon pattern: every 60 seconds
+   → MITRE: T1071.001 (Web C2)
+
+4. [EDR] WORKSTATION-42 accessed \\\\DC01\\ADMIN$ via SMB
+   → Credential: domain_admin (stolen)
+   → MITRE: T1021.002 (Lateral Movement via SMB)
+
+<span class="code-comment"># XDR Verdict: Active compromise — phishing → execution → C2 → lateral movement</span>
+<span class="code-comment"># Auto-response: isolate WORKSTATION-42, block C2 IP, disable domain_admin account</span></code></pre></div>
+
+<div class="callout callout-info"><strong>Di kelas ini:</strong> Kita pakai Wazuh (SIEM + EDR) + Wireshark (network analysis) + TheHive (case management) — ini essentially "manual XDR". Tools terpisah, tapi workflow-nya sama. Kalau nanti kerja di enterprise, kemungkinan besar akan pakai XDR platform yang integrasikan semuanya.</div>
+` },
+
+    { id: 'when-to-use', title: 'Kapan Pakai Yang Mana?',
+      html: `
+<table class="ref-table">
+  <tr><th>Skenario</th><th>Solusi</th><th>Kenapa</th></tr>
+  <tr><td>UMKM, 10 laptop, budget minim</td><td>AV (Windows Defender) + Wazuh Agent</td><td>Free, basic protection + some visibility</td></tr>
+  <tr><td>Startup 50-200 karyawan</td><td>EDR (SentinelOne/CrowdStrike) + SIEM (Wazuh)</td><td>Endpoint visibility + log aggregation. Affordable per-seat.</td></tr>
+  <tr><td>Enterprise 1000+ karyawan</td><td>EDR + NDR + SIEM</td><td>Full visibility endpoint + network. Butuh dedicated SOC team.</td></tr>
+  <tr><td>Enterprise + cloud-heavy</td><td>XDR platform</td><td>Korelasi otomatis, reduce alert fatigue, faster response.</td></tr>
+  <tr><td>OT/IoT environment</td><td>NDR (wajib)</td><td>Device nggak bisa install agent. NDR satu-satunya visibility.</td></tr>
+  <tr><td>Compliance-driven (bank, telco)</td><td>XDR + SIEM + dedicated SOC</td><td>Regulasi require comprehensive monitoring + audit trail.</td></tr>
+</table>
+
+<div class="callout callout-tip"><strong>Career tip:</strong> Kalau mau kerja di SOC, pahami konsep semua — tapi fokus hands-on ke EDR dan SIEM dulu. Ini yang paling sering dipakai L1/L2 analyst sehari-hari. NDR dan XDR biasanya di-manage L3 atau security engineer.</div>
+` },
+
+    { id: 'evolution', title: 'Evolusi Security Stack',
+      html: `
+<p>Timeline evolusi dari AV ke XDR:</p>
+<div class="flow-row" style="justify-content:flex-start;flex-wrap:wrap;gap:6px;margin:20px 0">
+  <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:10px 16px;text-align:center;min-width:120px">
+    <div style="font-size:0.7em;color:var(--text-faint)">1990s–2000s</div>
+    <div style="font-weight:700;font-size:0.9em">Antivirus</div>
+    <div style="font-size:0.7em;color:var(--text-muted)">Signature-only</div>
+  </div>
+  <div style="color:var(--text-faint);padding:0 4px">→</div>
+  <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:10px 16px;text-align:center;min-width:120px">
+    <div style="font-size:0.7em;color:var(--text-faint)">2010s</div>
+    <div style="font-weight:700;font-size:0.9em">NGAV + SIEM</div>
+    <div style="font-size:0.7em;color:var(--text-muted)">Heuristic + log centralization</div>
+  </div>
+  <div style="color:var(--text-faint);padding:0 4px">→</div>
+  <div style="background:var(--bg-card);border:1px solid var(--accent-glow);border-radius:8px;padding:10px 16px;text-align:center;min-width:120px">
+    <div style="font-size:0.7em;color:var(--text-faint)">2015–2020</div>
+    <div style="font-weight:700;font-size:0.9em;color:var(--accent)">EDR + NDR</div>
+    <div style="font-size:0.7em;color:var(--text-muted)">Behavioral + network visibility</div>
+  </div>
+  <div style="color:var(--text-faint);padding:0 4px">→</div>
+  <div style="background:var(--bg-card);border:1px solid var(--accent);border-radius:8px;padding:10px 16px;text-align:center;min-width:120px">
+    <div style="font-size:0.7em;color:var(--text-faint)">2020+</div>
+    <div style="font-weight:700;font-size:0.9em;color:var(--accent)">XDR</div>
+    <div style="font-size:0.7em;color:var(--text-muted)">Unified platform + AI/ML</div>
+  </div>
+</div>
+
+<p>Setiap generasi <em>menambah</em> yang sebelumnya, bukan mengganti. XDR modern tetap punya signature scanning (AV), behavioral analysis (EDR), dan network inspection (NDR) — tapi semuanya di satu platform dengan korelasi otomatis.</p>
+
+<div class="callout callout-warn"><strong>Hati-hati marketing.</strong> Banyak vendor yang re-label produk EDR mereka jadi "XDR" padahal cuma EDR + sedikit integrasi. True XDR harus genuinely cross-domain: endpoint + network + cloud + identity, dengan korelasi otomatis, bukan cuma dashboard yang kumpulin alert dari berbagai sumber.</div>
+` }
+
+  ] // end sections
+} // end av-edr-ndr-xdr
 }); // end Object.assign
