@@ -149,8 +149,8 @@ function navigate(toolId, skipHash) {
 function renderHomePage() {
   return `
     <div class="home-hero">
-      <h1>SOC Tools &<br><span>Reference Guide</span></h1>
-      <p>Panduan lengkap tools dan referensi SOC Analyst — dari install, cara pakai, sampai playbook investigasi.</p>
+      <h1 style="text-align:center">SOC Tools & <span>Reference Guide</span></h1>
+      <p style="text-align:center;margin:0 auto">Panduan lengkap tools dan referensi SOC Analyst — dari install, cara pakai, sampai playbook investigasi.</p>
     </div>
     <div class="soc-workflow">
       <div class="soc-workflow-label">🔄 SOC Analyst Workflow — Incident Response Lifecycle</div>

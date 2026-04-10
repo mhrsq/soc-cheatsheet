@@ -12,6 +12,14 @@ function osTabs(tabs) {
 
 const NAV_SECTIONS = [
   {
+    label: 'Getting Started',
+    items: [
+      { id: 'env-vm', name: 'Setup: VM (VirtualBox)', color: '#60a5fa' },
+      { id: 'env-wsl', name: 'Setup: WSL (Windows)', color: '#60a5fa' },
+      { id: 'env-vps', name: 'Setup: VPS (Cloud)', color: '#60a5fa' }
+    ]
+  },
+  {
     label: 'Fundamentals',
     items: [
       { id: 'soc-fundamentals', name: 'SOC Fundamentals', color: '#34d399' },
@@ -105,6 +113,12 @@ const NAV_SECTIONS = [
     ]
   },
   {
+    label: 'Reporting',
+    items: [
+      { id: 'reporting', name: 'Incident Reporting', color: '#a78bfa' }
+    ]
+  },
+  {
     label: 'Playbooks',
     items: [
       { id: 'ir-playbooks', name: 'IR Playbooks', color: '#ec4899' },
@@ -115,6 +129,11 @@ const NAV_SECTIONS = [
 ];
 
 const HOME_CATEGORIES = [
+  { name: 'Environment Setup', tools: [
+    { id: 'env-vm', name: 'VM (VirtualBox/VMware)', hosted: false, desc: 'Setup lab environment dengan virtual machine. Step by step dari nol.' },
+    { id: 'env-wsl', name: 'WSL (Windows)', hosted: false, desc: 'Windows Subsystem for Linux. Lab tanpa VM, langsung di Windows.' },
+    { id: 'env-vps', name: 'VPS (Cloud)', hosted: false, desc: 'Setup lab di cloud VPS. Accessible dari mana saja.' }
+  ]},
   { name: 'SOC Fundamentals', tools: [
     { id: 'soc-fundamentals', name: 'SOC Fundamentals', hosted: false, desc: 'Apa itu SOC, role L1/L2/L3, daily routine, escalation, dan SLA.' },
     { id: 'log-analysis', name: 'Log Analysis', hosted: false, desc: 'Cara baca log dari nol: format, timestamp, severity, dan field extraction.' },
