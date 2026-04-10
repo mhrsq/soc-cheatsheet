@@ -54,51 +54,51 @@ Object.assign(TOOLS, {
 <table class="ref-table">
   <tr><th>Jenis Report</th><th>Audience</th><th>Panjang</th><th>Format</th><th>Kapan Dipakai</th></tr>
   <tr>
-    <td><strong>Alert Triage Note</strong></td>
-    <td>SOC team internal (shift handoff)</td>
-    <td>2-5 kalimat</td>
-    <td>Ticket comment / short note</td>
-    <td>Setiap alert yang di-close — documented di tiket (IRIS/TheHive/Jira)</td>
+    <td><strong>1. Alert First Notification Report</strong></td>
+    <td>SOC team, SOC Manager, stakeholder terkait</td>
+    <td>0.5-1 halaman</td>
+    <td>Email / ticket / short doc</td>
+    <td>Segera setelah alert pertama kali terdeteksi dan dikonfirmasi bukan FP. Ini notifikasi awal sebelum investigasi mendalam selesai.</td>
   </tr>
   <tr>
-    <td><strong>Investigation Report</strong></td>
-    <td>SOC team, L2/L3, SOC Manager</td>
-    <td>1-3 halaman</td>
-    <td>Structured document</td>
-    <td>Setiap investigasi yang menemukan True Positive atau butuh escalation</td>
-  </tr>
-  <tr>
-    <td><strong>Incident Report</strong></td>
+    <td><strong>2. Incident Report</strong></td>
     <td>Management, Legal, CISO, Regulator</td>
     <td>3-10+ halaman</td>
     <td>Formal document (PDF)</td>
-    <td>Insiden yang confirmed — terutama yang high/critical severity</td>
+    <td>Setelah insiden selesai di-handle. Laporan lengkap: timeline, root cause, impact, containment, eradication, recovery, recommendations.</td>
   </tr>
   <tr>
-    <td><strong>Post-Incident Review</strong></td>
-    <td>Semua stakeholder, SOC team</td>
-    <td>2-5 halaman</td>
-    <td>Meeting notes + action items</td>
-    <td>Setelah insiden besar selesai — lessons learned, apa yang perlu diperbaiki</td>
+    <td><strong>3. Digital Forensic Report</strong></td>
+    <td>Legal, law enforcement, CISO, IR team</td>
+    <td>5-20+ halaman</td>
+    <td>Formal document (PDF) + evidence appendix</td>
+    <td>Ketika ada investigasi forensik mendalam — memory analysis, disk forensics, malware analysis. Harus mencakup chain of custody, metodologi, dan temuan teknis detail.</td>
   </tr>
   <tr>
-    <td><strong>Threat Intel Report</strong></td>
-    <td>SOC team, threat intel community</td>
+    <td><strong>4. Threat Intel Report</strong></td>
+    <td>SOC team, threat intel community, partner</td>
     <td>1-3 halaman</td>
-    <td>TLP-labeled, structured IOC</td>
-    <td>Ketika menemukan campaign/threat baru yang perlu di-share</td>
+    <td>TLP-labeled document, structured IOC</td>
+    <td>Ketika menemukan campaign/threat baru, malware variant, atau C2 infrastructure yang perlu di-share ke komunitas atau partner.</td>
   </tr>
   <tr>
-    <td><strong>SOC Metrics Report</strong></td>
+    <td><strong>5. Monthly / Weekly Report</strong></td>
     <td>SOC Manager, CISO, Management</td>
+    <td>2-5 halaman</td>
+    <td>PDF summary + dashboard screenshot</td>
+    <td>Periodic report: rangkuman insiden, highlight threat, notable events, status open cases, achievement, dan area yang perlu improvement.</td>
+  </tr>
+  <tr>
+    <td><strong>6. SOC Metrics Report</strong></td>
+    <td>CISO, Management, Board</td>
     <td>1-2 halaman + dashboard</td>
-    <td>Dashboard / PDF summary</td>
-    <td>Weekly atau monthly — operasional SOC performance</td>
+    <td>Dashboard / executive summary</td>
+    <td>KPI-driven report: MTTD, MTTR, false positive rate, alert volume trend, SLA compliance. Fokus angka dan trend, bukan narasi.</td>
   </tr>
 </table>
 
 <div class="callout callout-tip">
-<strong>Rule of thumb:</strong> Setiap alert = minimal triage note. Setiap TP = investigation report. Setiap insiden confirmed = formal incident report. Setiap bulan = metrics report. Jangan skip dokumentasi — future you (dan shift berikutnya) akan berterima kasih.
+<strong>Rule of thumb:</strong> Alert masuk = first notification report. Insiden selesai = incident report. Ada forensics = digital forensic report. Temuan baru = threat intel report. Tiap minggu/bulan = periodic + metrics report.
 </div>
 `},
 

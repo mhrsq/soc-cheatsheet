@@ -211,11 +211,39 @@ function renderToolPage(toolId) {
     ${i < tool.sections.length - 1 ? '<div class="doc-divider"></div>' : ''}
   `).join('');
 
+  // Prev/Next navigation
+  const pageOrder = getPageOrder();
+  const currentIdx = pageOrder.indexOf(toolId);
+  const prevPage = currentIdx > 0 ? pageOrder[currentIdx - 1] : null;
+  const nextPage = currentIdx < pageOrder.length - 1 ? pageOrder[currentIdx + 1] : null;
+  const prevName = prevPage ? (TOOLS[prevPage]?.name || prevPage) : '';
+  const nextName = nextPage ? (TOOLS[nextPage]?.name || nextPage) : '';
+
+  const navButtons = `<div class="page-nav">
+    ${prevPage ? `<div class="page-nav-btn prev" onclick="navigate('${prevPage}')"><span class="page-nav-label">← Previous</span><span class="page-nav-title">${prevName}</span></div>` : '<div></div>'}
+    ${nextPage ? `<div class="page-nav-btn next" onclick="navigate('${nextPage}')"><span class="page-nav-label">Next →</span><span class="page-nav-title">${nextName}</span></div>` : '<div></div>'}
+  </div>`;
+
   return `<div class="breadcrumb">${breadcrumb}</div>
     <div class="tool-header">
       <div class="tool-header-top"><h1>${tool.name}</h1><div class="tool-tags">${tagHtml}</div></div>
       <p class="tool-subtitle">${tool.subtitle}</p>
-    </div>${sections}`;
+    </div>${sections}${navButtons}`;
+}
+
+// ─── PAGE ORDER (flat list from NAV_SECTIONS) ───────────
+function getPageOrder() {
+  const order = [];
+  NAV_SECTIONS.forEach(section => {
+    section.items.forEach(item => {
+      if (item.children) {
+        item.children.forEach(child => order.push(child.id));
+      } else {
+        order.push(item.id);
+      }
+    });
+  });
+  return order;
 }
 
 // ─── TOC ────────────────────────────────────────────────

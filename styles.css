@@ -305,6 +305,14 @@ body.sidebar-is-collapsed .main.with-toc { max-width:calc(100% - var(--sidebar-c
 .platform-card .pc-link:hover { text-decoration:underline; }
 
 .doc-divider { height:1px; background:var(--border); margin:40px 0; }
+
+/* Prev/Next page nav */
+.page-nav { display:flex; justify-content:space-between; gap:16px; margin-top:48px; padding-top:24px; border-top:1px solid var(--border); }
+.page-nav-btn { display:flex; flex-direction:column; gap:4px; padding:14px 20px; border-radius:10px; border:1px solid var(--border); background:var(--card); cursor:pointer; transition:all var(--transition); max-width:45%; }
+.page-nav-btn:hover { border-color:var(--accent-glow); background:var(--accent-dim); }
+.page-nav-btn.next { align-items:flex-end; text-align:right; margin-left:auto; }
+.page-nav-label { font-size:11px; font-family:var(--mono); color:var(--accent); font-weight:600; }
+.page-nav-title { font-size:13px; font-weight:600; color:var(--text); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 code { font-family:var(--mono); font-size:12px; background:var(--code-bg); border:1px solid var(--code-border); padding:1px 5px; border-radius:4px; color:#4ade80; }
 
 /* ─── SEARCH MODAL ─── */
