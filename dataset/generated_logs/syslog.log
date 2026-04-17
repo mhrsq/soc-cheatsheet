@@ -1,0 +1,188 @@
+Apr 07 00:31:00 WEB-SERVER-01 CRON[6223]: (root) CMD (/usr/local/bin/monitoring.sh)
+Apr 07 00:31:00 WEB-SERVER-01 systemd[1]: Started Session 580 of user root.
+Apr 07 00:46:00 DB-SERVER-01 CRON[4927]: (root) CMD (/usr/local/bin/monitoring.sh)
+Apr 07 00:46:00 DB-SERVER-01 systemd[1]: Started Session 555 of user root.
+Apr 07 01:31:00 DB-SERVER-01 systemd[1]: Started Session 893 of user root.
+Apr 07 01:42:00 WEB-SERVER-01 systemd[1]: Started Session 373 of user root.
+Apr 07 02:39:00 WEB-SERVER-01 systemd[1]: Started Session 383 of user root.
+Apr 07 02:59:00 DB-SERVER-01 systemd[1]: Started Session 582 of user root.
+Apr 07 03:01:00 DB-SERVER-01 systemd[1]: Started Session 818 of user root.
+Apr 07 03:44:00 WEB-SERVER-01 systemd[1]: Started Session 458 of user root.
+Apr 07 04:00:00 DB-SERVER-01 systemd[1]: Started Session 973 of user root.
+Apr 07 04:07:00 WEB-SERVER-01 systemd[1]: Started Session 705 of user root.
+Apr 07 05:01:00 WEB-SERVER-01 systemd[1]: Started Session 589 of user root.
+Apr 07 05:48:00 DB-SERVER-01 systemd[1]: Started Session 925 of user root.
+Apr 07 06:05:00 DB-SERVER-01 CRON[4006]: (root) CMD (/usr/local/bin/monitoring.sh)
+Apr 07 06:05:00 DB-SERVER-01 systemd[1]: Started Session 327 of user root.
+Apr 07 06:14:00 WEB-SERVER-01 CRON[5716]: (root) CMD (/usr/local/bin/monitoring.sh)
+Apr 07 06:14:00 WEB-SERVER-01 systemd[1]: Started Session 759 of user root.
+Apr 07 07:29:00 DB-SERVER-01 systemd[1]: Started Session 486 of user root.
+Apr 07 07:39:00 WEB-SERVER-01 systemd[1]: Started Session 368 of user root.
+Apr 07 08:12:00 DB-SERVER-01 systemd[1]: Started Session 172 of user root.
+Apr 07 08:20:00 WEB-SERVER-01 systemd[1]: Started Session 234 of user root.
+Apr 07 09:38:00 WEB-SERVER-01 systemd[1]: Started Session 200 of user root.
+Apr 07 09:48:00 DB-SERVER-01 systemd[1]: Started Session 118 of user root.
+Apr 07 10:12:12 WEB-SERVER-01 sshd[6420]: Accepted publickey for admin from 10.10.3.10 port 52276 ssh2
+Apr 07 10:35:00 WEB-SERVER-01 systemd[1]: Started Session 690 of user root.
+Apr 07 10:47:00 DB-SERVER-01 systemd[1]: Started Session 572 of user root.
+Apr 07 11:06:00 WEB-SERVER-01 systemd[1]: Started Session 663 of user root.
+Apr 07 11:23:00 DB-SERVER-01 systemd[1]: Started Session 774 of user root.
+Apr 07 12:03:00 DB-SERVER-01 CRON[3740]: (root) CMD (/usr/local/bin/monitoring.sh)
+Apr 07 12:03:00 DB-SERVER-01 systemd[1]: Started Session 98 of user root.
+Apr 07 12:48:00 WEB-SERVER-01 CRON[3260]: (root) CMD (/usr/local/bin/monitoring.sh)
+Apr 07 12:48:00 WEB-SERVER-01 systemd[1]: Started Session 288 of user root.
+Apr 07 12:48:46 DB-SERVER-01 sshd[9790]: Accepted publickey for admin from 10.10.2.50 port 49355 ssh2
+Apr 07 13:17:00 WEB-SERVER-01 systemd[1]: Started Session 176 of user root.
+Apr 07 13:31:16 DB-SERVER-01 sshd[4833]: Accepted publickey for admin from 10.10.2.50 port 54165 ssh2
+Apr 07 13:56:00 DB-SERVER-01 systemd[1]: Started Session 412 of user root.
+Apr 07 14:28:31 WEB-SERVER-01 sshd[9290]: Accepted publickey for admin from 10.10.2.50 port 58763 ssh2
+Apr 07 14:32:00 DB-SERVER-01 systemd[1]: Started Session 323 of user root.
+Apr 07 14:39:39 WEB-SERVER-01 sshd[3872]: Accepted publickey for admin from 10.10.3.10 port 49322 ssh2
+Apr 07 14:55:00 WEB-SERVER-01 systemd[1]: Started Session 488 of user root.
+Apr 07 15:33:00 DB-SERVER-01 systemd[1]: Started Session 887 of user root.
+Apr 07 15:37:35 DB-SERVER-01 sshd[3529]: Accepted publickey for admin from 10.10.2.50 port 51810 ssh2
+Apr 07 15:47:00 WEB-SERVER-01 systemd[1]: Started Session 428 of user root.
+Apr 07 16:14:00 DB-SERVER-01 systemd[1]: Started Session 282 of user root.
+Apr 07 16:24:00 WEB-SERVER-01 systemd[1]: Started Session 708 of user root.
+Apr 07 17:16:00 DB-SERVER-01 systemd[1]: Started Session 775 of user root.
+Apr 07 17:23:00 WEB-SERVER-01 systemd[1]: Started Session 179 of user root.
+Apr 07 18:02:00 DB-SERVER-01 CRON[9088]: (root) CMD (/usr/local/bin/monitoring.sh)
+Apr 07 18:02:00 DB-SERVER-01 systemd[1]: Started Session 148 of user root.
+Apr 07 18:24:00 WEB-SERVER-01 CRON[2914]: (root) CMD (/usr/local/bin/monitoring.sh)
+Apr 07 18:24:00 WEB-SERVER-01 systemd[1]: Started Session 548 of user root.
+Apr 07 19:22:00 DB-SERVER-01 systemd[1]: Started Session 682 of user root.
+Apr 07 19:23:00 WEB-SERVER-01 systemd[1]: Started Session 675 of user root.
+Apr 07 20:31:00 DB-SERVER-01 systemd[1]: Started Session 789 of user root.
+Apr 07 20:45:00 WEB-SERVER-01 systemd[1]: Started Session 631 of user root.
+Apr 07 21:15:00 DB-SERVER-01 systemd[1]: Started Session 146 of user root.
+Apr 07 21:20:00 WEB-SERVER-01 systemd[1]: Started Session 497 of user root.
+Apr 07 22:27:00 DB-SERVER-01 systemd[1]: Started Session 501 of user root.
+Apr 07 22:51:00 WEB-SERVER-01 systemd[1]: Started Session 854 of user root.
+Apr 07 23:43:00 WEB-SERVER-01 systemd[1]: Started Session 948 of user root.
+Apr 07 23:53:00 DB-SERVER-01 systemd[1]: Started Session 817 of user root.
+Apr 08 00:32:00 DB-SERVER-01 CRON[7854]: (root) CMD (/usr/local/bin/monitoring.sh)
+Apr 08 00:32:00 DB-SERVER-01 systemd[1]: Started Session 153 of user root.
+Apr 08 00:36:00 WEB-SERVER-01 CRON[9167]: (root) CMD (/usr/local/bin/monitoring.sh)
+Apr 08 00:36:00 WEB-SERVER-01 systemd[1]: Started Session 403 of user root.
+Apr 08 01:33:00 WEB-SERVER-01 systemd[1]: Started Session 657 of user root.
+Apr 08 01:49:00 DB-SERVER-01 systemd[1]: Started Session 886 of user root.
+Apr 08 02:20:00 DB-SERVER-01 systemd[1]: Started Session 231 of user root.
+Apr 08 02:46:00 WEB-SERVER-01 systemd[1]: Started Session 93 of user root.
+Apr 08 03:19:00 WEB-SERVER-01 systemd[1]: Started Session 940 of user root.
+Apr 08 03:41:00 DB-SERVER-01 systemd[1]: Started Session 188 of user root.
+Apr 08 04:00:00 DB-SERVER-01 systemd[1]: Started Session 902 of user root.
+Apr 08 04:14:00 WEB-SERVER-01 systemd[1]: Started Session 801 of user root.
+Apr 08 05:28:00 DB-SERVER-01 systemd[1]: Started Session 631 of user root.
+Apr 08 05:49:00 WEB-SERVER-01 systemd[1]: Started Session 138 of user root.
+Apr 08 06:52:00 WEB-SERVER-01 CRON[3638]: (root) CMD (/usr/local/bin/monitoring.sh)
+Apr 08 06:52:00 WEB-SERVER-01 systemd[1]: Started Session 425 of user root.
+Apr 08 06:57:00 DB-SERVER-01 CRON[4706]: (root) CMD (/usr/local/bin/monitoring.sh)
+Apr 08 06:57:00 DB-SERVER-01 systemd[1]: Started Session 189 of user root.
+Apr 08 07:23:00 DB-SERVER-01 systemd[1]: Started Session 708 of user root.
+Apr 08 07:52:00 WEB-SERVER-01 systemd[1]: Started Session 404 of user root.
+Apr 08 08:08:00 WEB-SERVER-01 systemd[1]: Started Session 443 of user root.
+Apr 08 08:11:00 DB-SERVER-01 systemd[1]: Started Session 371 of user root.
+Apr 08 09:01:00 WEB-SERVER-01 systemd[1]: Started Session 377 of user root.
+Apr 08 09:25:00 DB-SERVER-01 sshd[9544]: Accepted password for root from 10.10.2.50 port 58877 ssh2
+Apr 08 09:31:00 DB-SERVER-01 systemd[1]: Started Session 25 of user root.
+Apr 08 09:59:12 WEB-SERVER-01 sshd[1794]: Accepted publickey for admin from 10.10.3.10 port 54240 ssh2
+Apr 08 10:00:00 WEB-SERVER-01 systemd[1]: Started Session 734 of user root.
+Apr 08 10:11:48 DB-SERVER-01 sshd[2522]: Accepted publickey for admin from 10.10.3.10 port 64844 ssh2
+Apr 08 10:14:30 DB-SERVER-01 sshd[4101]: Accepted publickey for admin from 10.10.2.50 port 52771 ssh2
+Apr 08 10:54:00 DB-SERVER-01 systemd[1]: Started Session 609 of user root.
+Apr 08 11:22:42 DB-SERVER-01 sshd[4779]: Accepted publickey for admin from 10.10.3.10 port 55029 ssh2
+Apr 08 11:54:36 DB-SERVER-01 sshd[1192]: Accepted publickey for admin from 10.10.3.10 port 49510 ssh2
+Apr 08 11:55:00 WEB-SERVER-01 systemd[1]: Started Session 636 of user root.
+Apr 08 11:57:00 DB-SERVER-01 systemd[1]: Started Session 58 of user root.
+Apr 08 12:14:00 WEB-SERVER-01 CRON[3749]: (root) CMD (/usr/local/bin/monitoring.sh)
+Apr 08 12:14:00 WEB-SERVER-01 systemd[1]: Started Session 571 of user root.
+Apr 08 12:25:00 DB-SERVER-01 CRON[9233]: (root) CMD (/usr/local/bin/monitoring.sh)
+Apr 08 12:25:00 DB-SERVER-01 systemd[1]: Started Session 326 of user root.
+Apr 08 13:30:00 WEB-SERVER-01 systemd[1]: Started Session 207 of user root.
+Apr 08 13:43:00 DB-SERVER-01 systemd[1]: Started Session 588 of user root.
+Apr 08 14:00:00 WEB-SERVER-01 systemd[1]: Started Session 390 of user root.
+Apr 08 14:39:00 DB-SERVER-01 systemd[1]: Started Session 108 of user root.
+Apr 08 15:47:00 DB-SERVER-01 systemd[1]: Started Session 678 of user root.
+Apr 08 15:59:00 WEB-SERVER-01 systemd[1]: Started Session 377 of user root.
+Apr 08 16:03:00 WEB-SERVER-01 systemd[1]: Started Session 270 of user root.
+Apr 08 16:21:00 DB-SERVER-01 systemd[1]: Started Session 882 of user root.
+Apr 08 16:34:49 WEB-SERVER-01 sshd[1414]: Accepted publickey for admin from 10.10.3.10 port 53639 ssh2
+Apr 08 17:21:00 WEB-SERVER-01 systemd[1]: Started Session 850 of user root.
+Apr 08 17:39:00 DB-SERVER-01 systemd[1]: Started Session 50 of user root.
+Apr 08 18:08:00 WEB-SERVER-01 CRON[6367]: (root) CMD (/usr/local/bin/monitoring.sh)
+Apr 08 18:08:00 WEB-SERVER-01 systemd[1]: Started Session 73 of user root.
+Apr 08 18:43:00 DB-SERVER-01 CRON[6396]: (root) CMD (/usr/local/bin/monitoring.sh)
+Apr 08 18:43:00 DB-SERVER-01 systemd[1]: Started Session 571 of user root.
+Apr 08 19:33:00 DB-SERVER-01 systemd[1]: Started Session 337 of user root.
+Apr 08 19:51:00 WEB-SERVER-01 systemd[1]: Started Session 189 of user root.
+Apr 08 20:33:00 DB-SERVER-01 systemd[1]: Started Session 565 of user root.
+Apr 08 20:44:00 WEB-SERVER-01 systemd[1]: Started Session 283 of user root.
+Apr 08 21:05:00 DB-SERVER-01 systemd[1]: Started Session 524 of user root.
+Apr 08 21:29:00 WEB-SERVER-01 systemd[1]: Started Session 243 of user root.
+Apr 08 22:05:00 WEB-SERVER-01 systemd[1]: Started Session 899 of user root.
+Apr 08 22:26:00 DB-SERVER-01 systemd[1]: Started Session 71 of user root.
+Apr 08 23:06:00 DB-SERVER-01 systemd[1]: Started Session 914 of user root.
+Apr 08 23:24:00 WEB-SERVER-01 systemd[1]: Started Session 593 of user root.
+Apr 09 00:37:00 DB-SERVER-01 CRON[9835]: (root) CMD (/usr/local/bin/monitoring.sh)
+Apr 09 00:37:00 DB-SERVER-01 systemd[1]: Started Session 688 of user root.
+Apr 09 00:55:00 WEB-SERVER-01 CRON[3525]: (root) CMD (/usr/local/bin/monitoring.sh)
+Apr 09 00:55:00 WEB-SERVER-01 systemd[1]: Started Session 777 of user root.
+Apr 09 01:48:00 DB-SERVER-01 systemd[1]: Started Session 297 of user root.
+Apr 09 01:56:00 WEB-SERVER-01 systemd[1]: Started Session 669 of user root.
+Apr 09 02:09:00 DB-SERVER-01 systemd[1]: Started Session 918 of user root.
+Apr 09 02:24:00 WEB-SERVER-01 systemd[1]: Started Session 99 of user root.
+Apr 09 03:44:00 WEB-SERVER-01 systemd[1]: Started Session 262 of user root.
+Apr 09 03:51:00 DB-SERVER-01 systemd[1]: Started Session 618 of user root.
+Apr 09 04:11:00 WEB-SERVER-01 systemd[1]: Started Session 845 of user root.
+Apr 09 04:52:00 DB-SERVER-01 systemd[1]: Started Session 374 of user root.
+Apr 09 05:14:00 DB-SERVER-01 systemd[1]: Started Session 42 of user root.
+Apr 09 05:40:00 WEB-SERVER-01 systemd[1]: Started Session 854 of user root.
+Apr 09 06:10:00 DB-SERVER-01 CRON[3885]: (root) CMD (/usr/local/bin/monitoring.sh)
+Apr 09 06:10:00 DB-SERVER-01 systemd[1]: Started Session 756 of user root.
+Apr 09 06:41:00 WEB-SERVER-01 CRON[9629]: (root) CMD (/usr/local/bin/monitoring.sh)
+Apr 09 06:41:00 WEB-SERVER-01 systemd[1]: Started Session 334 of user root.
+Apr 09 07:47:00 WEB-SERVER-01 systemd[1]: Started Session 894 of user root.
+Apr 09 07:48:00 DB-SERVER-01 systemd[1]: Started Session 769 of user root.
+Apr 09 08:10:00 WEB-SERVER-01 systemd[1]: Started Session 996 of user root.
+Apr 09 08:50:00 DB-SERVER-01 systemd[1]: Started Session 970 of user root.
+Apr 09 09:17:00 WEB-SERVER-01 systemd[1]: Started Session 428 of user root.
+Apr 09 09:18:00 DB-SERVER-01 systemd[1]: Started Session 552 of user root.
+Apr 09 10:06:09 WEB-SERVER-01 sshd[5770]: Accepted publickey for admin from 10.10.2.50 port 56802 ssh2
+Apr 09 10:17:00 DB-SERVER-01 systemd[1]: Started Session 101 of user root.
+Apr 09 10:23:07 WEB-SERVER-01 sshd[7675]: Accepted publickey for admin from 10.10.2.50 port 58862 ssh2
+Apr 09 10:36:06 DB-SERVER-01 sshd[9227]: Accepted publickey for admin from 10.10.2.50 port 52896 ssh2
+Apr 09 10:42:00 WEB-SERVER-01 systemd[1]: Started Session 869 of user root.
+Apr 09 11:00:00 WEB-SERVER-01 systemd[1]: Started Session 100 of user root.
+Apr 09 11:34:00 DB-SERVER-01 systemd[1]: Started Session 444 of user root.
+Apr 09 11:40:17 WEB-SERVER-01 sshd[6273]: Accepted publickey for admin from 10.10.3.10 port 54638 ssh2
+Apr 09 12:18:00 DB-SERVER-01 CRON[1947]: (root) CMD (/usr/local/bin/monitoring.sh)
+Apr 09 12:18:00 DB-SERVER-01 systemd[1]: Started Session 232 of user root.
+Apr 09 12:50:00 WEB-SERVER-01 CRON[1087]: (root) CMD (/usr/local/bin/monitoring.sh)
+Apr 09 12:50:00 WEB-SERVER-01 systemd[1]: Started Session 158 of user root.
+Apr 09 12:57:17 DB-SERVER-01 sshd[4839]: Accepted publickey for admin from 10.10.2.50 port 53886 ssh2
+Apr 09 13:08:52 WEB-SERVER-01 sshd[8745]: Accepted publickey for admin from 10.10.3.10 port 63095 ssh2
+Apr 09 13:13:00 WEB-SERVER-01 systemd[1]: Started Session 865 of user root.
+Apr 09 13:44:00 DB-SERVER-01 systemd[1]: Started Session 372 of user root.
+Apr 09 14:39:00 WEB-SERVER-01 systemd[1]: Started Session 340 of user root.
+Apr 09 14:44:00 DB-SERVER-01 systemd[1]: Started Session 871 of user root.
+Apr 09 15:12:12 DB-SERVER-01 sshd[6905]: Accepted publickey for admin from 10.10.2.50 port 63771 ssh2
+Apr 09 15:17:00 WEB-SERVER-01 systemd[1]: Started Session 299 of user root.
+Apr 09 15:51:00 DB-SERVER-01 systemd[1]: Started Session 492 of user root.
+Apr 09 16:43:00 WEB-SERVER-01 systemd[1]: Started Session 275 of user root.
+Apr 09 16:57:00 DB-SERVER-01 systemd[1]: Started Session 805 of user root.
+Apr 09 17:24:00 DB-SERVER-01 systemd[1]: Started Session 985 of user root.
+Apr 09 17:39:00 WEB-SERVER-01 systemd[1]: Started Session 41 of user root.
+Apr 09 18:10:00 DB-SERVER-01 CRON[6009]: (root) CMD (/usr/local/bin/monitoring.sh)
+Apr 09 18:10:00 DB-SERVER-01 systemd[1]: Started Session 344 of user root.
+Apr 09 18:53:00 WEB-SERVER-01 CRON[2255]: (root) CMD (/usr/local/bin/monitoring.sh)
+Apr 09 18:53:00 WEB-SERVER-01 systemd[1]: Started Session 929 of user root.
+Apr 09 19:03:00 WEB-SERVER-01 systemd[1]: Started Session 300 of user root.
+Apr 09 19:18:00 DB-SERVER-01 systemd[1]: Started Session 822 of user root.
+Apr 09 20:45:00 WEB-SERVER-01 systemd[1]: Started Session 798 of user root.
+Apr 09 20:56:00 DB-SERVER-01 systemd[1]: Started Session 824 of user root.
+Apr 09 21:03:00 DB-SERVER-01 systemd[1]: Started Session 235 of user root.
+Apr 09 21:41:00 WEB-SERVER-01 systemd[1]: Started Session 150 of user root.
+Apr 09 22:26:00 WEB-SERVER-01 systemd[1]: Started Session 448 of user root.
+Apr 09 22:53:00 DB-SERVER-01 systemd[1]: Started Session 821 of user root.
+Apr 09 23:00:00 DB-SERVER-01 systemd[1]: Started Session 715 of user root.
+Apr 09 23:35:00 WEB-SERVER-01 systemd[1]: Started Session 49 of user root.
